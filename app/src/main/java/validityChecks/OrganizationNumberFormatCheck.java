@@ -10,7 +10,7 @@ public class OrganizationNumberFormatCheck extends ValidityCheck {
 
 	@Override
 	public boolean check(String pNumber) {
-		if (pNumber.length() < 10) return false;
+		if (pNumber.length() < 10 || pNumber.length() > 13) return false;
 		String convertedPNumber = PersonNumberConverter.convert(pNumber);
 		
 		if (Integer.valueOf(convertedPNumber.substring(2, 3)) < 20 ) {
@@ -19,7 +19,6 @@ public class OrganizationNumberFormatCheck extends ValidityCheck {
 		}
 		
 		if (pNumber.length() > 11 && !pNumber.substring(0, 2).equals("16")) {
-			System.out.println("HERE");
 			return false;
 		}
 		

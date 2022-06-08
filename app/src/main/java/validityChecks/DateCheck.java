@@ -15,7 +15,7 @@ public abstract class DateCheck extends ValidityCheck {
 	
 	@Override
 	public boolean check(String pNumber) {
-		if (pNumber.length() < 10) return false;
+		if (pNumber.length() < 10 || pNumber.length() > 13) return false;
 		String convertedPNumber = PersonNumberConverter.convert(pNumber);
 		int[] daysInMonth = getDayArray(pNumber);
 		int month = Integer.valueOf(convertedPNumber.substring(2, 4));
@@ -25,7 +25,7 @@ public abstract class DateCheck extends ValidityCheck {
 			return false;
 		}
 		
-		if (day > daysInMonth[month] || day < this.dayFloor) {
+		if (day > daysInMonth[month - 1] || day < this.dayFloor) {
 			return false;
 		}
 		

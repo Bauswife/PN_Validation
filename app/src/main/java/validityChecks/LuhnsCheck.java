@@ -10,7 +10,7 @@ public class LuhnsCheck extends ValidityCheck {
 
 	@Override
 	public boolean check(String pNumber) {
-		if (pNumber.length() < 10) return false;
+		if (pNumber.length() < 10 || pNumber.length() > 13) return false;
 		
 		String convertedPNumber = PersonNumberConverter.convert(pNumber);
 		int sum = 0;
